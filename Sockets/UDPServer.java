@@ -10,8 +10,8 @@ class UDPServer {
 		int numConn = 1;
 		
 		try (DatagramSocket serverSocket = new DatagramSocket(porta)) {
-			byte[] receiveData = new byte[1024];
-			byte[] sendData = new byte[1024];
+			byte[] receiveData = new byte[4096];
+			byte[] sendData = new byte[4096];
 
 			while (true) {
 
@@ -19,10 +19,11 @@ class UDPServer {
 						receiveData.length);
 				System.out.println("Esperando por datagrama UDP na porta " + porta);
 				serverSocket.receive(receivePacket);
-				System.out.print("Datagrama UDP [" + numConn + "] recebido...");
+				System.out.println("Datagrama UDP [" + numConn + "] recebido...");
 
 				String sentence = new String(receivePacket.getData());
-				System.out.println(sentence);
+				System.out.println("Senha: "+ sentence);
+				System.out.println("=========================================== ");
 				
 				InetAddress IPAddress = receivePacket.getAddress();
 
@@ -42,13 +43,14 @@ class UDPServer {
 						sendData.length, IPAddress, port);
 
 				
-
+				System.out.println("Criptografando - Técnica MD5 ");
 				System.out.println("MD5: "+ teste);
 					
 				System.out.print("Enviando " + sendData + "...");
 
 				serverSocket.send(sendPacket);
 				System.out.println("OK\n");
+				System.out.println("=========================================== ");
 			}
 		}
 	}
