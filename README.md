@@ -1,2 +1,2 @@
-# Lab-SD
-Repositorio da materia de Lab. de Sistemas Distribuídos
+# Laboratório de Sistemas Distribuídos  
+Repositorio da matéria de Lab. de Sistemas Distribuídos
